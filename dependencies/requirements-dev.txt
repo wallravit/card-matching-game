@@ -1,0 +1,5 @@
+fastapi==0.63.0
+mypy==0.812
+pytest==6.2.3
+ujson==4.0.2
+uvicorn==0.13.4
