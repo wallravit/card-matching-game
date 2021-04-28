@@ -29,7 +29,7 @@ def get_controllers_version(version):
     try:
         return import_module("api.{}.controllers".format(folder_version))
     except Exception as ex:
-        print(ex)
+        logger.exception("get controllers version error.")
         raise NotFoundError(f"version {version} not support")
 
 
