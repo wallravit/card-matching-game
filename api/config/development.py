@@ -1,5 +1,3 @@
-import os
-
 from .base import *
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sql_app.db")
+DATABASE_ENGINE_ARGS = {"check_same_thread": False}
