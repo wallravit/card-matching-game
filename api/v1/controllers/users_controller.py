@@ -1,8 +1,10 @@
 from datetime import datetime, timedelta
+from logging import Logger
 from typing import Dict, Optional
 
 from api.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
 from api.exception import UnauthorizedError
+from api.models.user_model import UserModel
 from api.repositories import UserRepository
 from api.schemas import user_schemas
 from api.utils import acquire_logger
@@ -15,25 +17,21 @@ from sqlalchemy.orm import Session
 
 class UsersController:
     def __init__(self) -> None:
+        self._logger = acquire_logger("user-controller")
         self._pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-        self._user_repository = UserRepository()
-        self._logger = acquire_logger(self.__class__.__name__)
-
-    async def get_user_info(self) -> None:
-        self._logger.info("get user info.")
-        return None
+        self._user_repository = UserRepository(self._logger)
 
     async def create_user(self, db: Session, request: Request) -> Dict:
         try:
             payload = await request.json()
-            result = self._user_repository.create(
+            return self._user_repository.create(
                 db,
-                user_schemas.UserCreate(
+                UserModel(
                     username=payload["username"],
-                    password=self._hash_password(payload["password"]),
+                    hashed_password=self._hash_password(payload["password"]),
+                    created_datetime=datetime.now(),
                 ),
             )
-            return result
         except:
             self._logger.exception("create user fail.")
             raise
