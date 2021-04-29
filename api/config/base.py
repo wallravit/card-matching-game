@@ -1,5 +1,8 @@
 import os
 
+
+APP_VERSION = os.getenv("APP_VERSION", "1.0.0")
+
 DATABASE_HOST = os.getenv("DATABASE_HOST", "localhost")
 DATABASE_PORT = int(os.getenv("DATABASE_PORT", 5432))
 DATABASE_NAME = os.getenv("DATABASE_NAME", "cardGameDB")
