@@ -19,6 +19,8 @@ services:
       - POSTGRES_USER=username
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=cardGameDB
+    ports:
+      - 5432:5432
     expose:
       - 5432
 volumes:
