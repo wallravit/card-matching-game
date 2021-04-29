@@ -1,4 +1,3 @@
-from importlib import import_module
 from typing import Dict, List, Optional
 
 from api.database import SessionLocal
@@ -10,6 +9,8 @@ from fastapi import APIRouter, Depends, Request, Response
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
+logger = acquire_logger("users-router")
+router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
@@ -21,10 +22,6 @@ def get_db():
         db.close()
 
 
-logger = acquire_logger("users-router")
-router = APIRouter()
-
-
 @router.get("/{version}/users", response_model=user_schemas.User, tags=["users"])
 async def get_user_info(
     version: str, token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)
@@ -32,7 +29,6 @@ async def get_user_info(
     try:
         controller = get_controller("UsersController", version)
         result = await controller.get_current_user(db, token)
-        logger.info(f"{result}")
         return result
     except:
         raise
