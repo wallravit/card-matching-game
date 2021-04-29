@@ -1,5 +1,8 @@
 import os
 
+
+APP_VERSION = os.getenv("APP_VERSION", "1.0.0")
+
 DATABASE_HOST = os.getenv("DATABASE_HOST", "localhost")
 DATABASE_PORT = int(os.getenv("DATABASE_PORT", 5432))
 DATABASE_NAME = os.getenv("DATABASE_NAME", "cardGameDB")
@@ -13,4 +16,6 @@ DATABASE_URL = os.getenv(
 
 SECRET_KEY = os.getenv("SECRET_KEY", "KEEP-SECURE")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
+
+CARD_GAME_ROW = int(os.getenv("CARD_GAME_ROW", 4))
+CARD_GAME_COL = int(os.getenv("CARD_GAME_COL", 3))
