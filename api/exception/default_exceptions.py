@@ -9,3 +9,8 @@ class NotFoundError(HTTPException):
 class UnauthorizedError(HTTPException):
     def __init__(self, detail=None):
         super().__init__(401, detail)
+
+
+class UnprocessableEntity(HTTPException):
+    def __init__(self, detail=None):
+        super().__init__(422, detail)
