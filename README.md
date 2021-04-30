@@ -48,7 +48,7 @@ docker compose up db
 in case of empty database or first run please run script
 
 ```
-/scripts/init_database.sh    
+# ./scripts/init_database.sh
 ```
 ## API Document
 
