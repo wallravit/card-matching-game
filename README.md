@@ -23,13 +23,13 @@
    (1,2), (2,2), (3,2), (4,2), 
    (1,3), (2,3), (3,3), (4,3)
 ]
+```
 
-# example new game board
+- Example new game board
+```
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ```
 
-***
-```
 ### Route architecture
 
 `GET /:resource/:id`: to get detail of the `resource` by `id`
