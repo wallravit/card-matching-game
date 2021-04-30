@@ -1,6 +1,35 @@
 # CARD MATCHING GAME API
 
 
+### Game Instructions
+1. create user
+2. generate token key
+3. let play
+
+
+### Board Payload
+- Example 3 x 4
+```
+🃏 🃏 🃏 🃏
+🃏 🃏 🃏 🃏
+🃏 🃏 🃏 🃏
+```
+
+- Board game payload
+```
+# (row, col)
+[
+   (1,1), (2,1), (3,1), (4,1), 
+   (1,2), (2,2), (3,2), (4,2), 
+   (1,3), (2,3), (3,3), (4,3)
+]
+
+# example new game board
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+```
+
+***
+```
 ### Route architecture
 
 `GET /:resource/:id`: to get detail of the `resource` by `id`
