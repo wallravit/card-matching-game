@@ -29,7 +29,12 @@
 ```
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ```
-
+- Row, Col calculate function
+```
+func(row, col){
+   return (col) * CARD_GAME_ROW + (row);
+}
+```
 ### Route architecture
 
 `GET /:resource/:id`: to get detail of the `resource` by `id`
